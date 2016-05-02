@@ -1,0 +1,15 @@
+ba83e7a93ce2fa42cbe8f32ca25aab37 *DESCRIPTION
+7c01ca4066d7eb77c837f852a6136a08 *NAMESPACE
+3f2a7d5b37eea997dae04952d997d8df *NEWS.md
+fcdf13180407d2fdf40bd661731c2c17 *R/aaa-tools.R
+39700391a5468151d574a04452859ba4 *R/hms.R
+dbd4c5c24d27f4e1b4c546aaf3d86230 *README.md
+50a62e9a0212cd6108eaa5e1f4662b9a *man/hms.Rd
+929afdb21c50685048246bdc5d82207d *tests/testthat.R
+fc7098abdba1003efcde210eced441ac *tests/testthat/helper-compare.R
+c4d5778e338b9c559585f51d07349bf0 *tests/testthat/test-arith.R
+6c97d9c126f0a3f9ecefe6934e0a6fac *tests/testthat/test-coercion.R
+86ca91c46da5d129c7585c3917826596 *tests/testthat/test-construct.R
+729b9b7e662853a7c5abee0ea26e9eb3 *tests/testthat/test-lubridate.R
+85bb0772ef3944815066387f645763c0 *tests/testthat/test-output.R
+36082171f366b616c4004a919542871c *tests/testthat/test-update.R
