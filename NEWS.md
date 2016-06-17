@@ -1,3 +1,13 @@
+# hms 0.2 (2016-06-17)
+
+Minor fixes and improvements.
+
+- Subsetting keeps `hms` class (#16).
+- `format.hms()` right-justifies the output by padding with spaces from the left, `as.character.hms()` remains unchanged.
+- Times larger than 24 hours or with split seconds are now formatted correctly (#12, #13).
+- Sub-second part is printed with up to six digits, for even smaller values trailing zeros are shown (#17).
+
+
 # hms 0.1 (2016-04-30)
 
 First CRAN release.
@@ -19,7 +29,7 @@ First CRAN release.
     - `as.hms()` for `character`, `numeric`, `POSIXct` and `POSIXlt`
     - `as.xxx.hms()` for `character`, `numeric` (implicitly), `POSIXct` and
       `POSIXlt`
-     - `is.hms()`
+    - `is.hms()`
     - `as.data.frame.hms()` (forwards to `as.data.frame.difftime()`)
     - `format.hms()`
     - `print.hms()` (returns unchanged input invisibly)
