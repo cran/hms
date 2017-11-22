@@ -1,9 +1,10 @@
+#' @import rlang
 #' @importFrom methods setOldClass
 setOldClass(c("hms", "difftime"))
 
 #' A simple class for storing time-of-day values
 #'
-#' The values are stored as a \code{\link{difftime}} vector with a custom class,
+#' The values are stored as a [difftime] vector with a custom class,
 #' and always with "seconds" as unit for robust coercion to numeric.
 #' Supports construction from time values, coercion to and from
 #' various data types, and formatting.  Can be used as a regular column in a
@@ -12,14 +13,12 @@ setOldClass(c("hms", "difftime"))
 #' @name hms
 #' @examples
 #' hms(56, 34, 12)
+#' hms()
 #' as.hms(1)
 #' as.hms("12:34:56")
 #' as.hms(Sys.time())
 #' as.POSIXct(hms(1))
-#' \dontrun{
-#'   # Will raise an error
-#'   data.frame(a = hms(1))
-#' }
+#' data.frame(a = hms(1))
 #' d <- data.frame(hours = 1:3)
 #' d$hours <- hms(hours = d$hours)
 #' d
@@ -28,39 +27,20 @@ NULL
 # Construction ------------------------------------------------------------
 
 #' @rdname hms
-#' @details For \code{hms}, all arguments must have the same length or be
-#'   \code{NULL}.  Odd combinations (e.g., passing only \code{seconds} and
-#'   \code{hours} but not \code{minutes}) are rejected.
+#' @details For `hms`, all arguments must have the same length or be
+#'   `NULL`.  Odd combinations (e.g., passing only `seconds` and
+#'   `hours` but not `minutes`) are rejected.
 #' @param seconds,minutes,hours,days Time since midnight. No bounds checking is
 #'   performed.
 #' @export
 hms <- function(seconds = NULL, minutes = NULL, hours = NULL, days = NULL) {
   args <- list(seconds = seconds, minutes = minutes, hours = hours, days = days)
   check_args(args)
-  arg_secs <- mapply(`*`, args, c(1, 60, 3600, 86400))
-  secs <- Reduce(`+`, arg_secs[vapply(arg_secs, length, integer(1L)) > 0L])
+  arg_secs <- map2(args, c(1, 60, 3600, 86400), `*`)
+  secs <- reduce(arg_secs[!map_lgl(args, is.null)], `+`)
+  if (is.null(secs)) secs <- numeric()
 
   as.hms(as.difftime(secs, units = "secs"))
-}
-
-check_args <- function(args) {
-  lengths <- vapply(args, length, integer(1L))
-  if (all(lengths == 0L)) {
-    stop("Need to pass at least one entry for seconds, minutes, hours, or days to hms().",
-         call. = FALSE)
-  }
-
-  if (!all(diff(which(lengths != 0L)) == 1L)) {
-    stop("Can't pass only ", paste(names(lengths)[lengths != 0L], collapse = ", "),
-         " to hms().", call. = FALSE)
-  }
-
-  lengths <- lengths[lengths != 0]
-  if (length(unique(lengths)) > 1L) {
-    stop("All arguments to hms() must have the same length or be NULL. Found ",
-         paste0("length(", names(lengths), ") = ", lengths, collapse = ", "), ".",
-         call. = FALSE)
-  }
 }
 
 #' @rdname hms
@@ -96,14 +76,27 @@ as.hms.numeric <- function(x, ...) hms(seconds = x)
 #' @rdname hms
 #' @export
 as.hms.character <- function(x, ...) {
-  as.hms(as.difftime(x))
+  parse_hms(x)
+}
+
+#' @rdname hms
+#' @param tz The time zone in which to interpret a POSIXt time for extracting
+#'   the time of day.  The default is now the zone of `x` but was `"UTC"`
+#'   for v0.3 and earlier.  The previous behavior can be restored by calling
+#'   `pkgconfig::set_config("hms::default_tz", "UTC")`, see
+#'   [pkgconfig::set_config()].
+#' @export
+#' @importFrom pkgconfig get_config
+as.hms.POSIXt <- function(x, tz = pkgconfig::get_config("hms::default_tz", ""), ...) {
+  time <- as.POSIXlt(x, tz = tz)
+  hms(time$sec, time$min, time$hour)
 }
 
 #' @rdname hms
 #' @export
-as.hms.POSIXt <- function(x, ...) {
-  seconds <- as.numeric(as.POSIXct(x)) %% 86400
-  hms(seconds = seconds)
+as.hms.POSIXlt <- function(x, tz = pkgconfig::get_config("hms::default_tz", ""), ...) {
+  # We need to roundtrip via as.POSIXct() to respect the time zone
+  as.hms(as.POSIXct(x), tz = tz, ...)
 }
 
 
@@ -124,12 +117,14 @@ as.POSIXlt.hms <- function(x, ...) {
 #' @rdname hms
 #' @export
 as.character.hms <- function(x, ...) {
+  xx <- decompose(x)
+
   ifelse(is.na(x), "NA", paste0(
-    ifelse(x < 0, "-", ""),
-    format_two_digits(abs(hours(x))), ":",
-    format_two_digits(minute_of_hour(x)), ":",
-    format_two_digits(second_of_minute(x)),
-    format_split_seconds(x)))
+    ifelse(xx$sign, "-", ""),
+    format_hours(xx$hours), ":",
+    format_two_digits(xx$minute_of_hour), ":",
+    format_two_digits(xx$second_of_minute),
+    format_split_seconds(xx$split_seconds)))
 }
 
 #' @rdname hms
@@ -146,6 +141,11 @@ as.data.frame.hms <- forward_to(as.data.frame.difftime)
   hms(NextMethod())
 }
 
+# Combination -------------------------------------------------------------
+#' @export
+c.hms <- function(x, ...) {
+  as.hms(NextMethod())
+}
 
 # Updating ----------------------------------------------------------------
 
@@ -163,7 +163,11 @@ as.data.frame.hms <- forward_to(as.data.frame.difftime)
 #' @rdname hms
 #' @export
 format.hms <- function(x, ...) {
-  format(as.character(x), justify = "right")
+  if (length(x) == 0L) {
+    "hms()"
+  } else {
+    format(as.character(x), justify = "right")
+  }
 }
 
 #' @rdname hms
