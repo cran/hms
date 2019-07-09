@@ -3,17 +3,24 @@ pillar_shaft.hms <- function(x, ...) {
   data <- rep(NA_character_, length(x))
 
   xx <- decompose(x)
-  highlight_hours <- xx$hours > 0
+  has_hours <- xx$hours > 0
+  highlight_hours <- has_hours
   highlighted <- highlight_hours
-  highlight_minutes <- !highlighted & xx$minute_of_hour > 0
-  highlighted <- highlighted | highlight_minutes
-  highlight_seconds <- !highlighted & xx$second_of_minute > 0
-  highlighted <- highlighted | highlight_seconds
-  highlight_split_seconds <- !highlighted & xx$split_seconds > 0
 
-  need_split_seconds <- any(highlight_split_seconds, na.rm = TRUE)
-  need_seconds <- need_split_seconds || any(highlight_seconds, na.rm = TRUE)
-  need_hours <- any(highlight_hours, na.rm = TRUE)
+  has_minutes <- xx$minute_of_hour > 0
+  highlight_minutes <- !highlighted & has_minutes
+  highlighted <- highlighted | highlight_minutes
+
+  has_seconds <- xx$second_of_minute > 0
+  highlight_seconds <- !highlighted & has_seconds
+  highlighted <- highlighted | highlight_seconds
+
+  has_tics <- xx$tics > 0
+  highlight_tics <- !highlighted & has_tics
+
+  need_tics <- any(has_tics, na.rm = TRUE)
+  need_seconds <- need_tics || any(has_seconds, na.rm = TRUE)
+  need_hours <- any(has_hours, na.rm = TRUE)
   need_sign <- any(xx$sign)
 
   if (need_hours) {
@@ -29,7 +36,9 @@ pillar_shaft.hms <- function(x, ...) {
     )
     data <- paste0(
       data_seconds,
-      pillar::style_num(format_split_seconds(xx$split_seconds), xx$sign, highlight_split_seconds)
+      if (need_seconds) {
+        pillar::style_num(format_tics(xx$tics), xx$sign, highlight_tics)
+      }
     )
   } else {
     data_seconds <- paste0(
@@ -40,7 +49,7 @@ pillar_shaft.hms <- function(x, ...) {
     )
     data <- paste0(
       data_seconds,
-      pillar::style_num(format_split_seconds(xx$split_seconds), xx$sign, highlight_split_seconds),
+      pillar::style_num(format_tics(xx$tics), xx$sign, highlight_tics),
       pillar::style_subtle('"')
     )
   }

@@ -1,6 +1,7 @@
 context("output")
 
 test_that("output", {
+  expect_identical(format(hms()), "hms()")
   expect_identical(format(hms(1:2, minutes = c(0, 0), hours = 3:4)),
                    c("03:00:01", "04:00:02"))
   expect_identical(format(hms(minutes = 1:-1)),
@@ -9,6 +10,11 @@ test_that("output", {
     expect_identical(print(hms(minutes = 1:2, hours = 3:4)),
                      hms(minutes = 1:2, hours = 3:4)),
     "03:01:00\n04:02:00", fixed = TRUE)
+})
+
+test_that("abbreviation", {
+  expect_identical(vec_ptype_abbr(hms()), "time")
+  expect_identical(vec_ptype_full(hms()), "time")
 })
 
 test_that("beyond 24 hours (#12)", {
@@ -48,6 +54,21 @@ test_that("picoseconds (#17)", {
                    c("00:00:00.000000"))
   expect_identical(format(hms(c(1, 1e-20))),
                    c("00:00:01.000000", "00:00:00.000000"))
+})
+
+test_that("picoseconds to the next second (#140)", {
+  expect_identical(format(hms(1 - 1e-6)),
+                   c("00:00:00.999999"))
+  expect_identical(format(hms(1 - 9e-7)),
+                   c("00:00:00.999999"))
+  expect_identical(format(hms(1 - 4e-7)),
+                   c("00:00:01.000000"))
+  expect_identical(format(hms(1 - 1e-10)),
+                   c("00:00:01.000000"))
+  expect_identical(format(hms(1 - 1e-10)),
+                   c("00:00:01.000000"))
+  expect_identical(format(hms(1 - c(1, 1e-10))),
+                   c("00:00:00.000000", "00:00:01.000000"))
 })
 
 test_that("NA", {
