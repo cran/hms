@@ -1,10 +1,10 @@
-8b6477cfcf5268178dbcfce93f5285d7 *DESCRIPTION
+8f24098f6f1473ece455d7474159616a *DESCRIPTION
 b10c76165ece7ba9fd78074b8b4fcd55 *NAMESPACE
-88679c30eab82d0b0c33f189d5261e51 *NEWS.md
+b0726270607a0841bc7820ffe2fd86e1 *NEWS.md
 fcdf13180407d2fdf40bd661731c2c17 *R/aaa-tools.R
 1fee82e810be4583b57360d2f66e1ee3 *R/args.R
 35756eeba709476e300eaecf69e6b3cb *R/arith.R
-6f0f319f0400374a5734a91f8aa1d701 *R/cast.R
+8d8e3d9c28dd82bd911b7039d695e188 *R/cast.R
 4452b15f6e3a8bb94c9b016f5437f881 *R/coerce.R
 3b06ee41c6c8619e98933c040bf2236a *R/compat-lifecycle.R
 feaa904f11d6970ddbc1057a30cf6610 *R/compat-purrr.R
@@ -15,7 +15,7 @@ feaa904f11d6970ddbc1057a30cf6610 *R/compat-purrr.R
 a9073a8f1a7669cbdc2ded1fb16e7ad9 *R/round.R
 eb3cb013a475f35265e3e2ce3ad2412e *R/zzz.R
 f3621b24597cfef0be046d3f45abccc2 *README.md
-d2e5cf61d2f7a6edc27b893773fb9046 *build/hms.pdf
+91306e1bf31dec3558082bf1425c96c2 *build/hms.pdf
 dee18f3d04fe02cb2fd0e7798a924fb6 *man/Deprecated.Rd
 cb1e46f469cfbbbde29c8b5113e1d789 *man/figures/lifecycle-archived.svg
 c0d2e5a54f1fa4ff02bf9533079dd1f7 *man/figures/lifecycle-defunct.svg
@@ -42,7 +42,7 @@ b5d3c66107686b530cdfbae32d183527 *tests/testthat/out/hm.txt
 79f8df17ab9a4bf2b96a045db424c6e2 *tests/testthat/out/mss.txt
 fc1d6f4b9fe95e8fc3954fafe830b557 *tests/testthat/test-arith.R
 d1ed4120ab47337e143272d6737522a5 *tests/testthat/test-coercion-deprecated.R
-1a83bcf6d855fdcd6ee80fe93ad06185 *tests/testthat/test-coercion.R
+f446016b8c1b989cf86617b22c10f880 *tests/testthat/test-coercion.R
 f97049d2605dccc8142287d89edd9c10 *tests/testthat/test-colformat.R
 af73f34c3a33c404676e366eb4aa9dae *tests/testthat/test-combine.R
 bc889834f953020450636d97c3fcac90 *tests/testthat/test-construct.R
