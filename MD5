@@ -1,6 +1,6 @@
-8f24098f6f1473ece455d7474159616a *DESCRIPTION
+40838590a569f47647b6af213f0801ec *DESCRIPTION
 b10c76165ece7ba9fd78074b8b4fcd55 *NAMESPACE
-b0726270607a0841bc7820ffe2fd86e1 *NEWS.md
+72a22040497657d092035ea09a069abe *NEWS.md
 fcdf13180407d2fdf40bd661731c2c17 *R/aaa-tools.R
 1fee82e810be4583b57360d2f66e1ee3 *R/args.R
 35756eeba709476e300eaecf69e6b3cb *R/arith.R
@@ -10,12 +10,12 @@ fcdf13180407d2fdf40bd661731c2c17 *R/aaa-tools.R
 feaa904f11d6970ddbc1057a30cf6610 *R/compat-purrr.R
 364d7cd8c0547a6e667966d1e1d950e7 *R/format.R
 3bb3655f7b1862ff4c366a7f57cc9b96 *R/hms.R
-14354beaf9c5dc114553025432e6e670 *R/parse.R
+d336dd6270984e6550cb9330d1ec0d66 *R/parse.R
 908ff8ac532c2bd7e0e9dfa94ee27f19 *R/pillar.R
 a9073a8f1a7669cbdc2ded1fb16e7ad9 *R/round.R
 eb3cb013a475f35265e3e2ce3ad2412e *R/zzz.R
 f3621b24597cfef0be046d3f45abccc2 *README.md
-91306e1bf31dec3558082bf1425c96c2 *build/hms.pdf
+0775e0fff8656b5d9e862a5cdb44f558 *build/hms.pdf
 dee18f3d04fe02cb2fd0e7798a924fb6 *man/Deprecated.Rd
 cb1e46f469cfbbbde29c8b5113e1d789 *man/figures/lifecycle-archived.svg
 c0d2e5a54f1fa4ff02bf9533079dd1f7 *man/figures/lifecycle-defunct.svg
