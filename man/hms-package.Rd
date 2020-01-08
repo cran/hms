@@ -5,7 +5,7 @@
 \alias{hms-package}
 \title{hms: Pretty Time of Day}
 \description{
-\if{html}{\figure{logo.png}{options: align='right'}}
+\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 
 Implements an S3 class for storing and formatting time-of-day
     values, based on the 'difftime' class.
@@ -16,6 +16,7 @@ Implements an S3 class for storing and formatting time-of-day
 \seealso{
 Useful links:
 \itemize{
+  \item \url{https://hms.tidyverse.org/}
   \item \url{https://github.com/tidyverse/hms}
   \item Report bugs at \url{https://github.com/tidyverse/hms/issues}
 }
