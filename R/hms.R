@@ -1,7 +1,9 @@
 #' @details
-#' \Sexpr[results=rd, stage=render]{hms:::lifecycle("stable")}
+#' `r lifecycle::badge("stable")`
+#' @import lifecycle
 #' @import vctrs
 #' @import rlang
+#' @import ellipsis
 #' @aliases hms-package NULL
 "_PACKAGE"
 
@@ -97,7 +99,7 @@ NULL
 #' @export
 #' @keywords internal
 is.hms <- function(x) {
-  signal_soft_deprecated("is.hms() is deprecated, please use is_hms().")
+  deprecate_soft("0.5.0", "hms::is.hms()", "hms::is_hms()")
   is_hms(x)
 }
 
@@ -115,7 +117,8 @@ vec_ptype_full.hms <- function(x) {
 
 #' as_hms()
 #'
-#' `as_hms()` forwards to [vec_cast()].
+#' `as_hms()` is a generic that supports conversions beyond casting.
+#' The default method forwards to [vec_cast()].
 #'
 #' For arguments of type [POSIXct] and [POSIXlt], `as_hms()` does not perform timezone
 #' conversion.
@@ -124,16 +127,20 @@ vec_ptype_full.hms <- function(x) {
 #' @rdname hms
 #' @param x An object.
 #' @export
-as_hms <- function(x) {
+as_hms <- function(x, ...) {
+  check_dots_used()
+
+  UseMethod("as_hms")
+}
+
+#' @export
+as_hms.default <- function(x, ...) {
   vec_cast(x, new_hms())
 }
 
 #' Deprecated as.hms()
 #'
-#' `as.hms()` has been replaced by [as_hms()], which is no longer generic and also
-#' does not have a `tz` argument.
-#' It also uses the time zone of the argument for conversion,
-#' not the current system's timezone.
+#' `as.hms()` has been replaced by [as_hms()], which does not have a `tz` argument.
 #' Change the timezone before converting if necessary, e.g. using [lubridate::with_tz()].
 #'
 #' @inheritParams as_hms
@@ -142,7 +149,7 @@ as_hms <- function(x) {
 #' @export
 #' @keywords internal
 as.hms <- function(x, ...) {
-  signal_soft_deprecated("as.hms() is deprecated, please use as_hms().")
+  deprecate_soft("0.5.0", "hms::as.hms()", "hms::as_hms()")
   UseMethod("as.hms", x)
 }
 
