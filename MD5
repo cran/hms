@@ -1,7 +1,7 @@
-75636812677913d0dd4aea917edf90ba *DESCRIPTION
+048c94cdadf3717bf6fe74fd42df19cf *DESCRIPTION
 95270f4d7dead91c4d44e63964b8ae2b *LICENSE
-e43116493784c68ced0e69cafd3ec013 *NAMESPACE
-364a2c4912d4e7d33aa1bd60235d2565 *NEWS.md
+dd9392ac6f63df7ef709c9ddf897b3a8 *NAMESPACE
+d0720327e31477cf160ef9d59ece585b *NEWS.md
 1fee82e810be4583b57360d2f66e1ee3 *R/args.R
 35756eeba709476e300eaecf69e6b3cb *R/arith.R
 d7d5733aac1db7ddb371ec799ce3d37d *R/cast.R
@@ -12,8 +12,9 @@ f0b432f67efb921a7fe3d7872c7a483f *R/hms.R
 d336dd6270984e6550cb9330d1ec0d66 *R/parse.R
 908ff8ac532c2bd7e0e9dfa94ee27f19 *R/pillar.R
 303d057f7b463ef4244850538ea467b6 *R/round.R
+1340c06ea14c7a012dfaa9cdb7b55910 *R/unique.R
 eb3cb013a475f35265e3e2ce3ad2412e *R/zzz.R
-00ca30a15c33521c2e3982d667ee50b3 *README.md
+09dff77589274d6b0c218091818e48d3 *README.md
 eea4a86bcef6bf090b45b3041e78e1b5 *man/Deprecated.Rd
 cb1e46f469cfbbbde29c8b5113e1d789 *man/figures/lifecycle-archived.svg
 c0d2e5a54f1fa4ff02bf9533079dd1f7 *man/figures/lifecycle-defunct.svg
@@ -24,7 +25,7 @@ c3978703d8f40f2679795335715e98f4 *man/figures/lifecycle-experimental.svg
 6902bbfaf963fbc4ed98b86bda80caa2 *man/figures/lifecycle-soft-deprecated.svg
 53b3f893324260b737b3c46ed2a0e643 *man/figures/lifecycle-stable.svg
 3d561da75ad64e93abc817f5be07e6cf *man/figures/logo.png
-1e9caa2ff471cc18eea0f596ec5ec987 *man/hms-package.Rd
+019d56d56b7d775d74c64b5b474bbed7 *man/hms-package.Rd
 8d6e1ce54db4b4187ad9b8dcd96e4173 *man/hms.Rd
 b55df4864cedf621d12c2dca628477a1 *man/parse_hms.Rd
 0e11933eb922f7cb863c281a5f9a6203 *man/round_hms.Rd
@@ -44,4 +45,5 @@ daf0f5b209c221563b280c6fd596d6c9 *tests/testthat/test-output.R
 e63a890e29b8fbe96d77b893b88e75e1 *tests/testthat/test-parse.R
 48db96b9a31790a3af8a4057fdbc2792 *tests/testthat/test-round.R
 31cd46bc5654df1b6f489763e7bf6326 *tests/testthat/test-subset.R
+70976f60fd8284be4157ca0aa8776241 *tests/testthat/test-unique.R
 f574213c459919bab0007bb894221f29 *tests/testthat/test-update.R
