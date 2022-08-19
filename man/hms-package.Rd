@@ -5,10 +5,9 @@
 \alias{hms-package}
 \title{hms: Pretty Time of Day}
 \description{
-\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Implements an S3 class for storing and formatting time-of-day
-    values, based on the 'difftime' class.
+Implements an S3 class for storing and formatting time-of-day values, based on the 'difftime' class.
 }
 \details{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
@@ -23,7 +22,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Kirill Müller \email{krlmlr+r@mailbox.org}
+\strong{Maintainer}: Kirill Müller \email{kirill@cynkra.com} (\href{https://orcid.org/0000-0002-1416-3412}{ORCID})
 
 Other contributors:
 \itemize{
