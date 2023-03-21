@@ -3,7 +3,6 @@
 #' @importFrom lifecycle deprecate_soft expect_deprecated
 #' @import vctrs
 #' @import rlang
-#' @import ellipsis
 #' @aliases hms-package NULL
 "_PACKAGE"
 
@@ -45,7 +44,7 @@ NULL
 #' as numeric vectors.
 #'
 #' @rdname hms
-#' @details For `hms`, all arguments must have the same length or be
+#' @details For `hms()`, all arguments must have the same length or be
 #'   `NULL`.  Odd combinations (e.g., passing only `seconds` and
 #'   `hours` but not `minutes`) are rejected.
 #' @param seconds,minutes,hours,days Time since midnight. No bounds checking is
@@ -104,12 +103,12 @@ is.hms <- function(x) {
 }
 
 #' @export
-vec_ptype_abbr.hms <- function(x) {
+vec_ptype_abbr.hms <- function(x, ...) {
   "time"
 }
 
 #' @export
-vec_ptype_full.hms <- function(x) {
+vec_ptype_full.hms <- function(x, ...) {
   "time"
 }
 

@@ -1,14 +1,14 @@
-06b6ecf372d1519deeaeb6bf90e54237 *DESCRIPTION
+783a6d28fab813054cf32cfaf80438e5 *DESCRIPTION
 95270f4d7dead91c4d44e63964b8ae2b *LICENSE
-b57d564940297c12bcce8f7f77b6f78a *NAMESPACE
-95208a04ed8177d62772d75b56944d8f *NEWS.md
+1f1143f0af6343f5b3d12a41533687fd *NAMESPACE
+26a65376c46d39397f804a4b371d942d *NEWS.md
 5de8a459c31bf1228ecd322ce30647c7 *R/args.R
 35756eeba709476e300eaecf69e6b3cb *R/arith.R
 d7d5733aac1db7ddb371ec799ce3d37d *R/cast.R
 dacc78a1a6c36ffaf9cbcd3f6b3f38a9 *R/coerce.R
 feaa904f11d6970ddbc1057a30cf6610 *R/compat-purrr.R
 364d7cd8c0547a6e667966d1e1d950e7 *R/format.R
-73eb3c93ac3ae7332d170f86c3f42ec5 *R/hms.R
+dcbe9d041ff8d117faa621e777cf388a *R/hms.R
 d336dd6270984e6550cb9330d1ec0d66 *R/parse.R
 908ff8ac532c2bd7e0e9dfa94ee27f19 *R/pillar.R
 1e7dfdfc93c9256f1173792785a820b3 *R/round.R
@@ -26,7 +26,7 @@ c3978703d8f40f2679795335715e98f4 *man/figures/lifecycle-experimental.svg
 53b3f893324260b737b3c46ed2a0e643 *man/figures/lifecycle-stable.svg
 3d561da75ad64e93abc817f5be07e6cf *man/figures/logo.png
 4d613b55ebb3329a2341bee8d9a834a4 *man/hms-package.Rd
-8d6e1ce54db4b4187ad9b8dcd96e4173 *man/hms.Rd
+f035ddbfcd616210bbacd07f0c10d7b7 *man/hms.Rd
 b55df4864cedf621d12c2dca628477a1 *man/parse_hms.Rd
 0e11933eb922f7cb863c281a5f9a6203 *man/round_hms.Rd
 69698e7bc7bded0edd8d1ab174c89878 *man/vec_cast.hms.Rd
